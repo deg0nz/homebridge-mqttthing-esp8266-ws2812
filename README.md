@@ -22,7 +22,7 @@ For installing Homebridge and MQTT Broker, follow the corresponding parts in [ht
 * Adjust the variables at the top of `main.ino` to your needs
 * Install the NeoPixel library to the project: `platformio lib install --save "Adafruit NeoPixel"`
 * Compile the project: `platformio run`
-* Uplad the build to your ESP8266
+* Upload the build to your ESP8266
 
 ### Homebridge
 
@@ -51,7 +51,7 @@ Adjust `led-nodemcu` above if you changed the `host` variable in `main.ino`. Als
 
 ## Acknowledgements and sources
 
-* This is (more or less) heavily based on the codse from [https://www.studiopieters.nl/homebridge-mqtt-neopixel/](https://www.studiopieters.nl/homebridge-mqtt-neopixel/), but heavily modified.
-* Comprehension gotten from [https://www.studiopieters.nl/homebridge-homekit-2-mqtt-revised-installation/](https://www.studiopieters.nl/homebridge-homekit-2-mqtt-revised-installation/)
+* This is (more or less) heavily based on the code from [https://www.studiopieters.nl/homebridge-mqtt-neopixel/](https://www.studiopieters.nl/homebridge-mqtt-neopixel/), but heavily modified.
+* I also used parts from [https://www.studiopieters.nl/homebridge-homekit-2-mqtt-revised-installation/](https://www.studiopieters.nl/homebridge-homekit-2-mqtt-revised-installation/)
 * `PubSubClient` library included in this repo by [https://github.com/Imroy/pubsubclient](https://github.com/Imroy/pubsubclient)
 * `StringTokenizer` library included in this repo by [https://github.com/syalujjwal/Arduino-StringTokenizer-Library](https://github.com/syalujjwal/Arduino-StringTokenizer-Library)
