@@ -33,9 +33,11 @@ uint8_t saturation = 0;
 uint8_t value = 0; 
 uint32_t mappedHSV = 0;
 uint8_t lastKnownBrightness = 100; // Start with half of the brightness on boot
-bool isTheLightOn = false;
+bool withHsv = false;
 
 uint16_t pixelCounter;
+
+StringTokenizer tokenizer("foo", ",");
 uint8_t tokenCounter;
 
 String myTopic;
@@ -106,39 +108,45 @@ void mqttCallback(const MQTT::Publish& pub) {
   Serial.print(" => ");
 #endif
 
-  if (myTopic == host)
+  if (myTopic == host + (String)"/hsvcolor") 
   {
+#ifdef DEBUG
+    Serial.println(pub.payload_string());
+#endif
+    withHsv = true;
+    setHsvValuesFromPayload(pub.payload_string());
+  }
+  else if (myTopic == host)
+  {
+
 #ifdef DEBUG
     Serial.print(pub.payload_string());
 #endif
 
     if (pub.payload_string() == "true")
     {
-      // Return from extra sent "on" state when adjusting brightness
-      if(isTheLightOn == true) 
+      if(withHsv == true) 
       {
         return;
       }
-      value = lastKnownBrightness;
-      fillLeds(hue, saturation, value);
-      isTheLightOn = true;
+      else
+      {
+        value = lastKnownBrightness;
+      }
     }
     else
     {
-      lastKnownBrightness = value;
+      if(withHsv == true) 
+      {
+        lastKnownBrightness = value;
+      }
       value = 0;
-      fillLeds(hue, saturation, value);
-      isTheLightOn = false;
     }
+
+    withHsv = false;
   }
-  else if (myTopic == host + (String)"/hsvcolor") 
-  {
-#ifdef DEBUG
-    Serial.println(pub.payload_string());
-#endif
-    setHsvValuesFromPayload(pub.payload_string());
-    fillLeds(hue, saturation, value);
-  }
+
+  fillLeds(hue, saturation, value);
 
 #ifdef DEBUG
   printCurrentValues();
