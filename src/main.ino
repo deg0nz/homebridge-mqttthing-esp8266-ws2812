@@ -62,7 +62,7 @@ void fillLeds(int hue, float saturation, float value) {
 
 void setHsvValuesFromPayload(String payload) {
   tokenCounter = 0;
-  StringTokenizer tokenizer(payload, ",");
+  tokenizer.setString(payload);
   while(tokenizer.hasNext()) {
     switch (tokenCounter) {
         case 0:

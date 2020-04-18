@@ -14,6 +14,12 @@ StringTokenizer::StringTokenizer(String str, String del)
   ptr = 0;
 }
 
+void StringTokenizer::setString(String str)
+{
+  _str = str;
+  ptr = 0;
+}
+
 boolean StringTokenizer::hasNext()
 {
   if(ptr < _str.length()){

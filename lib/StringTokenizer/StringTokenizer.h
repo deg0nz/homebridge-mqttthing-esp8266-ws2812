@@ -12,6 +12,7 @@ class StringTokenizer
 {
   public:
     StringTokenizer(String str, String del);
+    void setString(String str);
     boolean hasNext();
     String nextToken();
   private:
