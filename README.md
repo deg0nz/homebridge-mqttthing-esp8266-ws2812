@@ -1,3 +1,5 @@
+> ⚠️ Note: This is obsolete for me and will be archived soon. I achieved the same thing with [WLED](https://github.com/Aircoookie/WLED) and the Homebridge Plugin [`homebridge-wled-simple`](https://www.npmjs.com/package/homebridge-wled-simple), which is super easy to configure and brings a lot more features. This setup seems to be extremely reliable as well.
+
 # Homebridge MQTT-Thing ESP8266 WS2812 Controller
 
 This program lets you control WS2812 LED stripes connected to an ESP8266 via Homebridge and the Homebridge MQTT-Thing plugin. This way you can control a WS2812 LED stripe via the iOS Home.app or Siri.
